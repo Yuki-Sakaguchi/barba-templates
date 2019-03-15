@@ -2,6 +2,9 @@
 Barba.jsを使ってSPAを構築する。  
 アニメーションはanime.jsを使う
 
+# DEMO
+https://yuki-sakaguchi.github.io/barba-templates/www/index.html
+
 # 準備
 ```
 npm i -S barba.js animejs

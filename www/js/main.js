@@ -15,8 +15,8 @@ $(function () {
         // サイト内を移動していた場合
         if (Barba.HistoryManager.history.length >= -1) {
             // ga, gtagをそれぞれ送信
-            typeof ga === 'function' || ga('send', 'pageview', location.pathname)
-            typeof gtag === 'function' || gtag('config', '[トラッキングID]', { page_path: location.pathname })
+            if (typeof ga === 'function') ga('send', 'pageview', location.pathname)
+            if (typeof gtag === 'function') gtag('config', '[トラッキングID]', { page_path: location.pathname })
         }
     })
 
