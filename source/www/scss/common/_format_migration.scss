@@ -1,0 +1,53 @@
+// mb-10, mb10などの表記のブレを吸収するためのクラス
+// デフォルトでは読み込まれていない
+
+@for $i from 0 through 24 {
+    $tmp: $i*5;
+  
+    // margin
+    .mt#{$tmp} {
+        margin-top: #{$tmp}px !important;
+    }
+  
+    .mr#{$tmp} {
+        margin-right: #{$tmp}px !important;
+    }
+  
+    .mb#{$tmp} {
+        margin-bottom: #{$tmp}px !important;
+    }
+  
+    .ml#{$tmp} {
+        margin-left: #{$tmp}px !important;
+    }
+  
+    // padding
+    .pt#{$tmp} {
+        padding-top: #{$tmp}px !important;
+    }
+  
+    .pr#{$tmp} {
+        padding-right: #{$tmp}px !important;
+    }
+  
+    .pb#{$tmp} {
+        padding-bottom: #{$tmp}px !important;
+    }
+  
+    .pl#{$tmp} {
+        padding-left: #{$tmp}px !important;
+    }
+}
+
+
+.btn_80 {
+    @extend .btn-100;
+}
+
+.btn_50 {
+    @extend .btn-50;
+}
+
+.align-center {
+    text-align: center;
+}

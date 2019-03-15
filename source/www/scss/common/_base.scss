@@ -1,0 +1,107 @@
+/* ========================================
+    
+    base
+        タグに直接効かせるスタイル
+
+    INDEX
+        - common
+        - anti-aliasing
+        - form
+
+======================================== */
+
+/* ========================================
+    common
+======================================== */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+    font-family: $MAIN_FONT_FAMILY;
+    font-size: 1.6rem; // サイトのベースの文字サイズ
+    line-height: 1.75;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: 100%; // 横にした時の文字拡大を防ぐ
+}
+
+html, 
+body {
+    height: 100%;
+}
+
+img {
+    vertical-align: bottom;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+
+    // 以下のコメントアウトを外せば、スマホでタップした時のハイライトを消すことができます。
+    // -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    // tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*:focus {
+    outline: none;
+}
+
+
+/* ========================================
+    anti-aliasing
+======================================== */
+// 文字のアンチエイリアス
+// http://creator.dwango.co.jp/14128.html
+// http://qiita.com/htomine/items/3086f30ca09adea2f8e0
+// フォントレンダリング設定: 1x解像度ではsubpixel、2x以上の解像度ではgrayscale
+
+body,
+html {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: unset;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    body,
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+
+/* ========================================
+    form
+======================================== */
+// fontが16px以下だとスマホでフォーカスした時にズームしてしまう
+input,
+textarea,
+select {
+    @include mq-mb() {
+        font-size: 16px;
+    }
+}
+
+// iOSでのデフォルトスタイルをリセット
+// button,
+// input[type="submit"],
+// input[type="button"] {
+//   border-radius: 0;
+//   -webkit-box-sizing: content-box;
+//   -webkit-appearance: button;
+//   appearance: button;
+//   border: none;
+//   box-sizing: border-box;
+//     &::-webkit-search-decoration {
+//       display: none;
+//     }
+//     &::focus {
+//       outline-offset: -2px;
+//     }
+// }

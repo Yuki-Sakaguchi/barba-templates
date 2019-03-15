@@ -1,0 +1,257 @@
+/* ========================================
+
+    animation
+        キーフレームアニメーションを定義する
+
+    INDEX
+        - keyframe
+        - option parts
+======================================== */
+
+/* ========================================
+    keyframe
+======================================== */
+// このクラスをつけてjsでactiveをつけるとアニメーションが動く
+.a-fadein-up {
+    opacity: 0; 
+    transform: translateY(20px);
+  
+    &.active {
+        animation-name: fadein-up;
+    }
+}
+
+@keyframes fadein-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================================
+    option parts
+
+        - 経過時間 animation-duration
+        - 開始までの待ち時間 animation-delay
+        - 繰り返し回数 animation-iteration-count
+        - 往復するかどうか animation-direction
+        - 完了後の状態 animation-fill-mode
+        - イージング animate-timing-function
+
+======================================== */
+// 以下のクラスをつけるだけでアニメーションのプロパティをつけられる
+// 例）
+//  <div class="a-fadein-up a-duration--30 a-delay--05 a-mode--forwards a-timing--in-cubic">TEST<div>
+//  ↓
+//  animation-name: fadein-up;
+//  animation-duration: 3s;
+//  animation-delay: 0.5s;
+//  animation-fill-mode: forwards;
+//  animate-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+
+//  animation-duration
+//      アニメーション完了までにかかる経過時間
+//
+//      ＜使い方＞
+//          .a-duration-00 〜 .a-duration-50まで
+//              .a-duration-00 = 0s
+//              .a-duration-05 = 0.5s
+//              .a-duration-30 = 3s
+@for $i from 0 through 50 {
+    $tmp: $i;
+    @if $i < 10 {
+        $tmp: "0#{$i}";
+    }
+    .a-duration--#{$tmp} {
+        animation-duration: ($i/10)*1s !important;
+    }
+}
+
+
+//  animation-delay
+//      アニメーション開始までの時間の調整
+//
+//      ＜使い方＞
+//          .a-delay-00 〜 .a-delay-50まで
+//              .a-delay-00 = 0s
+//              .a-delay-05 = 0.5s
+//              .a-delay-30 = 3s
+@for $i from 0 through 50 {
+    $tmp: $i;
+    @if $i < 10 {
+        $tmp: "0#{$i}";
+    }
+    .a-delay--#{$tmp} {
+        animation-delay: ($i/10)*1s !important;
+    }
+}
+
+
+//  animation-iteration-count
+//      アニメーションの繰り返し回数
+//
+//      ＜使い方＞
+//          .a-count-0 〜 .a-count-10まで
+//              .a-count-0 = 0
+//              .a-count-1 = 1回
+//              .a-count--infinite = 無限
+.a-count {
+    @for $i from 0 through 10 {
+        &--#{$i} {
+            animation-iteration-count: #{$i} !important;
+        }
+    }
+    &--infinite {
+        animation-iteration-count: infinite !important;
+    }
+}
+
+
+//  animation-direction
+//      アニメーションの片道、往復
+//
+//      ＜使い方＞
+//          .a-direction--off = 片道（デフォルト）
+//          .a-direction--on = 行って帰ってくる
+.a-direction {
+    &--on {
+        animation-direction: alternat !important;
+    }
+    &--off {
+        animation-direction: normal !important;
+    }
+}
+
+
+//  animation-fill-mode
+//      アニメーション完了後の状態
+//
+//      ＜使い方＞
+//          .a-mode--both = keyframe100%の状態を維持（animatino-delayがあれば次のアニメーション開始まで0%で維持）
+//          .a-mode--forwards = keyframe100%の状態を維持（animatino-delayがあれば次のアニメーション開始まで100%で維持）
+//          .a-mode--backwards = keyframe0%の状態を維持（animatino-delayがあれば次のアニメーション開始まで0%で維持）
+.a-mode {
+    &--both {
+        animation-fill-mode: both !important;
+    }
+    &--forwards {
+        animation-fill-mode: forwards !important;
+    }
+    &--backwards {
+        animation-fill-mode: backwards !important;
+    }
+}
+
+
+//  animate-timing-function
+//      アニメーションのイージング
+//
+//      ＜使い方＞
+//          .a-timing--in-sine     = 徐々に加速（SINE)
+//          .a-timing--out-sine    = 徐々に還俗（SINE)
+//          .a-timing--in-out-sine = 徐々に加速と徐々に原則（SINE)
+//
+//          .a-timing--in-expo     = 徐々に加速（EXPO)
+//          .a-timing--out-expo    = 徐々に還俗（EXPO)
+//          .a-timing--in-out-expo = 徐々に加速と徐々に原則（EXPO)
+//          などなど
+.a-timing {
+    // linear
+    &--linear {
+        animation-timing-function: $EASE_LINEAR !important;
+    }
+  
+    // sine
+    &--in-sine {
+        animation-timing-function: $EASE_IN_SINE !important;
+    }
+    &--out-sine {
+        animation-timing-function: $EASE_OUT_SINE !important;
+    }
+    &--in-out-sine {
+        animation-timing-function: $EASE_IN_OUT_SINE !important;
+    }
+  
+    // quad
+    &--in-quad {
+        animation-timing-function: $EASE_IN_QUAD !important;
+    }
+    &--out-quad {
+        animation-timing-function: $EASE_OUT_QUAD !important;
+    }
+    &--in-out-quad {
+        animation-timing-function: $EASE_IN_OUT_QUAD !important;
+    }
+  
+    // cubic
+    &--in-cubic {
+        animation-timing-function: $EASE_IN_CUBIC !important;
+    }
+    &--out-cubic {
+        animation-timing-function: $EASE_OUT_CUBIC !important;
+    }
+    &--in-out-cubic {
+        animation-timing-function: $EASE_IN_OUT_CUBIC !important;
+    }
+  
+    // quart
+    &--in-quart {
+        animation-timing-function: $EASE_IN_QUART !important;
+    }
+    &--out-quart {
+        animation-timing-function: $EASE_OUT_QUART !important;
+    }
+    &--in-out-quart {
+        animation-timing-function: $EASE_IN_OUT_QUART !important;
+    }
+  
+    // quint
+    &--in-quint {
+        animation-timing-function: $EASE_IN_QUINT !important;
+    }
+    &--out-quint {
+        animation-timing-function: $EASE_OUT_QUINT !important;
+    }
+    &--in-out-quint {
+        animation-timing-function: $EASE_IN_OUT_QUINT !important;
+    }
+  
+    // expo
+    &--in-expo {
+        animation-timing-function: $EASE_IN_EXPO !important;
+    }
+    &--out-expo {
+        animation-timing-function: $EASE_OUT_EXPO !important;
+    }
+    &--in-out-expo {
+        animation-timing-function: $EASE_IN_OUT_EXPO !important;
+    }
+  
+    // circ
+    &--in-circ {
+        animation-timing-function: $EASE_IN_CIRC !important;
+    }
+    &--out-circ {
+        animation-timing-function: $EASE_OUT_CIRC !important;
+    }
+    &--in-out-circ {
+        animation-timing-function: $EASE_IN_OUT_CIRC !important;
+    }
+  
+    // back
+    &--in-back {
+        animation-timing-function: $EASE_IN_BACK !important;
+    }
+    &--out-back {
+        animation-timing-function: $EASE_OUT_BACK !important;
+    }
+    &--in-out-back {
+        animation-timing-function: $EASE_IN_OUT_BACK !important;
+    }
+}

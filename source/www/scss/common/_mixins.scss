@@ -1,0 +1,266 @@
+// ========================================
+//
+//      mixins
+//          何度も使う重複する記述を定義
+//    
+//      INDEX
+//          - float
+//          - after
+//          - center
+//          - ratio
+//          - media query
+//
+// ========================================
+
+// ========================================
+//    float
+// ========================================
+// floatの解除
+@mixin clearfix() {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+// ========================================
+//  after
+//=========================================
+@mixin after() {
+    content: "";
+    display: block;
+    position: absolute;
+}
+
+
+// ========================================
+//  center
+//=========================================
+@mixin center() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin positionCenter() {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+@mixin flexCenter() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+// ========================================
+//  ratio
+//=========================================
+// padding-topを使って比率をキープしたボックスを作る
+// デフォルトは16:9のボックス（youtubeなどはこれ）
+// 例）
+//      include ratioBox();      // 16:9 -> 56.25%
+//      include ratioBox(16, 9); // 16:9 -> 56.25%
+//      include ratioBox(9, 16); // 9:16 -> 177.7777777778%
+//      include ratioBox(1, 1);  // 1:1  -> 100%
+@mixin ratioBox($width: 16, $height: 9, $par: 100%) {
+    &:before {
+        content: "";
+        display: block;
+        padding-top: ($height / $width) * $par;
+    }
+}
+
+
+// ========================================
+//    media query
+// ========================================
+// ----------------------------------------
+// ブラウザ幅に応じて反映するスタイルを変えるmixin
+// これを使えばあちこちに同じクラス名を書かなくて済む
+//
+// ＜前提＞
+//  $BP_L: 1000px;
+//  $BP_M: 750px;
+//  $BP_S; 480px;
+//
+// ＜例＞
+//  .box {
+//      // 全幅で効くスタイル
+//
+//      @include mq-xl() {
+//          // "1000px以上"の時に効くスタイル
+//      }
+//     
+//      @include mq-l() {
+//          // "750px 〜 1000px"の時に効くスタイル
+//      }
+//
+//      @include mq-m() {
+//          // "480px 〜 750px"の時に効くスタイル
+//      }
+//
+//      @include mq-s() {
+//          // "480px以下"の時に効くスタイル
+//      }
+//
+//
+//      /**
+//       * 引数に"false"を渡すと"それ以外"となる
+//       */
+//      @include mq-xl(false) {
+//          // "1000px以上以外"の時に効くスタイル
+//      }
+//     
+//      @include mq-l(false) {
+//          // "750px 〜 1000px以外"の時に効くスタイル
+//      }
+//
+//      @include mq-m(false) {
+//          // "480px 〜 750px以外"の時に効くスタイル
+//      }
+//
+//      @include mq-s(false) {
+//          // "480px以下以外"の時に効くスタイル
+//      }
+//
+//
+//      /**
+//       * TBを基準にそれ以下、それ以上で２分できる
+//       */
+//      @include mq-mb() {
+//          // "750px以下"の時に効くスタイル
+//      }
+//
+//      @include mq-pc() {
+//          // "750px以上"の時に効くスタイル
+//      }
+//  }
+// ----------------------------------------
+
+//
+// PC幅以上 のみ有効なスタイル
+//      $is_pc  true  => PC幅のみ
+//              false => PC幅以外
+//
+@mixin mq-xl($is_pc: true) {
+    @if $is_pc {
+        // デフォルト。PC幅以上
+        @media screen and (min-width: $BP_L + 1) {
+            @content;
+        }
+    } @else {
+        // TB幅以下
+        @media not screen and (min-width: $BP_L + 1) {
+            @content;
+        }
+    }
+}
+
+// 
+// TB 〜 PC幅 のみ有効なスタイル
+//      $is_pc  true  => PC幅のみ
+//              false => PC幅以外
+//
+@mixin mq-l($is_pc: true) {
+    @if $is_pc {
+        @media screen and (min-width: $BP_M + 1) and (max-width: $BP_L) {
+            @content;
+        }
+    } @else {
+        @media not screen and (min-width: $BP_M + 1) and (max-width: $BP_L) {
+            @content;
+        }
+    }
+}
+
+//
+// SP 〜 TB幅 のみ有効なスタイル
+//      $is_tb  true  => TB幅のみ
+//              false => TB幅以外
+//
+@mixin mq-m($is_tb: true) {
+    @if $is_tb {
+        // デフォルト。SP 〜 TB幅のみ有効
+        @media screen and (min-width: $BP_S + 1) and (max-width: $BP_M) {
+            @content;
+        }
+    } @else {
+        // TB幅以外
+        @media not screen and (min-width: $BP_S + 1) and (max-width: $BP_M) {
+            @content;
+        }
+    }
+}
+
+//
+// SP幅以下 のみ有効なスタイル
+//      $is_sp  true  => SP幅のみ
+//              false => SP幅以外
+//
+@mixin mq-s($is_sp: true) {
+    @if $is_sp {
+        // 初期値。SP幅のみ
+        @media screen and (max-width: $BP_S) {
+            @content;
+        }
+    } @else {
+        // SP幅以外
+        @media not screen and (max-width: $BP_S) {
+            @content;
+        }
+    }
+}
+
+//
+// iPhone5サイズのみ有効
+//
+@mixin mq-iphone5($is_iphone5: true) {
+    @if $is_iphone5 {
+        @media screen and (max-width: 320px) {
+            @content;
+        }
+    } @else {
+        @media not screen and (max-width: 320px) {
+            @content;
+        }
+    }
+}
+
+//
+// TB, SPのみ
+//
+@mixin mq-mb($is_mobile: true) {
+    @if $is_mobile {
+        @media screen and (max-width: $BP_M) {
+            @content;
+        }
+    } @else {
+        @media not screen and (max-width: $BP_M) {
+            @content;
+        }
+    }
+}
+
+//
+// PC以上のみ
+//
+@mixin mq-pc($is_pc: true) {
+    @if $is_pc {
+        @media screen and (min-width: $BP_M + 1) {
+            @content;
+        }
+    } @else {
+        @media not screen and (min-width: $BP_M + 1) {
+            @content;
+        }
+    }
+}

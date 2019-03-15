@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics-->
+        <script src="https://www.googletagmanager.com/gtag/js?id=UA-----------" async></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', "UA-----------");
+        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SUB | Barba.js</title>
+        <meta name="description" content="SUB | Barba.jsを使った画面遷移のテスト">
+        <meta name="keywords" content="SUB, Barba.js, SPA, 非同期">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <header class="header">
+            <p>Barba.js</p>
+            <ul class="menu">
+                <li class="menu__item"><a href="./index.html">TOP</a></li>
+                <li class="menu__item"><a href="./sub.html">SUB</a></li>
+            </ul>
+        </header>
+        <div class="content" id="barba-wrapper">
+            <div class="barba-container" data-namespace="slide">
+                <div class="content__box">
+                    <p>SUB</p>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <ul class="menu">
+                <li class="menu__item"><a href="./index.html#top">TOP（ハッシュ付き）</a></li>
+                <li class="menu__item"><a href="./sub.html#top">SUB（ハッシュ付き）</a></li>
+                <li class="menu__item"><a href="https://google.com">google（外部リンク）</a></li>
+                <li class="menu__item"><a class="no-barba" href="./index.html">TOP（.no-barba）</a></li>
+                <li class="menu__item"><a class="pjax-link" href="./index.html">TOP（.pjax-link）</a></li>
+                <li class="menu__item"><a href="./images/sample.png">リソース（png）</a></li>
+            </ul>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="/js/barba.min.js"></script>
+        <script src="/js/anime.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,294 @@
+/* ========================================
+    
+    parts
+        付けるだけで動くスタイルのパーツ
+
+    INDEX
+        - element
+        - layout
+        - font
+        - color
+        - margin, padding
+        - border
+
+======================================== */
+
+/* ========================================
+    element
+======================================== */
+// XLサイズ以外で非表示
+.xl-elem {
+    @include mq-xl(false) {
+        display: none !important;
+    }
+
+    &--inline {
+        display: inline;
+        
+        @include mq-xl(false) {
+            display: none !important;
+        }
+    }
+}
+
+// Lサイズ以外で非表示
+.l-elem {
+    @include mq-l(false) {
+        display: none !important;
+    }
+
+    &--inline {
+        display: inline;
+        
+        @include mq-l(false) {
+            display: none !important;
+        }
+    }
+}
+
+// Mサイズ以外で非表示
+.m-elem {
+    @include mq-m(false) {
+        display: none !important;
+    }
+
+    &--inline {
+        display: inline;
+        
+        @include mq-m(false) {
+            display: none !important;
+        }
+    }
+}
+
+// Sサイズ以外で非表示
+.s-elem {
+    @include mq-s(false) {
+        display: none !important;
+    }
+
+    &--inline {
+        display: inline;
+        
+        @include mq-s(false) {
+            display: none !important;
+        }
+    }
+}
+
+// モバイル、タブレットサイズ以外で非表示
+.mb-elem {
+    @include mq-mb(false) {
+        display: none !important;
+    }
+
+    &--inline {
+        display: inline;
+        
+        @include mq-mb(false) {
+            display: none !important;
+        }
+    }
+}
+
+// PCサイズ以外で非表示
+.pc-elem {
+    @include mq-pc(false) {
+        display: none !important;
+    }
+
+    &--inline {
+        display: inline;
+        
+        @include mq-pc(false) {
+            display: none !important;
+        }
+    }
+}
+
+
+/* ========================================
+    layout
+======================================== */
+.al-c {
+    text-align: center !important;
+}
+
+.al-r {
+    text-align: right !important;
+}
+
+.al-l {
+    text-align: left !important;
+}
+
+.fr {
+    float: right !important;
+}
+
+.fl {
+    float: left !important;
+}
+
+.cf {
+    @include clearfix();
+}
+
+
+/* ========================================
+    font
+======================================== */
+%x-small {
+    font-size: 0.6em;
+}
+
+.x-small {
+    @extend %x-small;
+}
+
+%small {
+    font-size: 0.8em;
+}
+
+.small {
+    @extend %small;
+}
+
+%large {
+    font-size: 1.2em;
+}
+
+.large {
+    @extend %large;
+}
+
+%x-large {
+    font-size: 1.4em;
+}
+
+.x-large {
+    @extend %x-large;
+}
+
+%bold {
+    font-weight: bold;
+}
+
+.bold {
+    @extend %bold;
+}
+
+%italic {
+    font-style: italic;
+}
+
+.italic {
+    @extend %italic;
+}
+
+%link {
+    color: $C_LINK;
+}
+
+.link {
+    @extend %link;
+}
+
+
+/* ========================================
+    color
+======================================== */
+.c-white {
+    color: $C_WHITE !important;
+}
+
+.c-gray {
+    color: $C_GRAY !important;
+}
+
+.c-black {
+    color: $C_BLACK !important;
+}
+
+.c-red {
+    color: $C_RED !important;
+}
+
+.c-green {
+    color: $C_GREEN !important;
+}
+
+.c-blue {
+    color: $C_BLUE !important;
+}
+
+.c-yellow {
+    color: $C_YELLOW !important;
+}
+
+.c-pink {
+    color: $C_PINK !important;
+}
+
+.c-purple {
+    color: $C_PURPLE !important;
+}
+
+
+/* ========================================
+    margin, padding
+======================================== */
+// 0〜120まで5px刻み
+@for $i from 0 through 24 {
+    $tmp: $i*5;
+  
+    // margin
+    .mt-#{$tmp} {
+        margin-top: #{$tmp}px !important;
+    }
+  
+    .mr-#{$tmp} {
+        margin-right: #{$tmp}px !important;
+    }
+  
+    .mb-#{$tmp} {
+        margin-bottom: #{$tmp}px !important;
+    }
+  
+    .ml-#{$tmp} {
+        margin-left: #{$tmp}px !important;
+    }
+  
+    // padding
+    .pt-#{$tmp} {
+        padding-top: #{$tmp}px !important;
+    }
+  
+    .pr-#{$tmp} {
+        padding-right: #{$tmp}px !important;
+    }
+  
+    .pb-#{$tmp} {
+        padding-bottom: #{$tmp}px !important;
+    }
+  
+    .pl-#{$tmp} {
+        padding-left: #{$tmp}px !important;
+    }
+}
+
+
+/* ========================================
+    border
+======================================== */
+hr {
+    &.solid {
+        border: none;
+        border-top: 1px solid $C_BLACK;
+    }
+
+    &.dot {
+        border: none;
+        border-top: 1px dotted $C_BLACK;
+    }
+}

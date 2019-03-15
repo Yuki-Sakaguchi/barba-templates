@@ -1,0 +1,106 @@
+// ========================================
+//
+//      variables
+//          サイト全体で使う変数定義
+// 
+//      INDEX
+//          - break point
+//          - color
+//          - path
+//          - easing
+//
+// ========================================
+
+// ========================================
+//    break point
+// ========================================
+$BP_L: 1080px; // PC
+$BP_M: 780px;  // TB
+$BP_S: 480px;  // SP
+
+
+// ========================================
+//    color
+// ========================================
+$C_WHITE: white;
+$C_GRAY: gray;
+$C_BLACK: black;
+$C_RED: red;
+$C_GREEN: green;
+$C_BLUE: blue;
+$C_YELLOW: yellow;
+$C_PINK: pink;
+$C_PURPLE: purple;
+
+$C_MAIN: $C_WHITE; // サイトのメインカラー
+$C_SUB1: $C_GRAY; // サイトのサブカラー1
+$C_SUB2: $C_BLACK; // サイトのサブカラー2
+
+$C_LINK: $C_RED; // リンクの文字色
+
+
+// ========================================
+//    path
+// ========================================
+$IMG: '/images/';
+
+
+// ========================================
+//    font
+// ========================================
+$MAIN_FONT_FAMILY: 'Noto Sans JP', "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif; // サイト全体
+
+
+// ========================================
+//    easing
+// ========================================
+// 以下のサイトからイージングを全て定義しました。
+// http://easings.net/ja
+
+// << 補足説明 >>
+//     ＜スピード感＞
+//          IN = 徐々に加速し、終わり際が一番早い
+//          OUT = 最初が早くて、徐々に減速
+//          IN_OUT = 徐々に加速し、中間が一番早く、徐々に減速する
+// 
+//      ＜緩急の大きさ順＞
+//          なだらか ... SINE < QUAD < CUBIC < QUART < QUINT < EXPO ... 急
+//
+//      ＜その他＞
+//          LINEAR -> 等速
+//          CIRC   -> 加速、減速が大きなカーブ
+//          BACK   -> 一度通り過ぎてから戻ってくる
+
+$EASE_LINEAR: linear;
+
+$EASE_IN_SINE: cubic-bezier(0.47, 0, 0.745, 0.715);
+$EASE_OUT_SINE: cubic-bezier(0.39, 0.575, 0.565, 1);
+$EASE_IN_OUT_SINE: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+$EASE_IN_QUAD: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$EASE_OUT_QUAD: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$EASE_IN_OUT_QUAD: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+$EASE_IN_CUBIC: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$EASE_OUT_CUBIC: cubic-bezier(0.215, 0.61, 0.355, 1);
+$EASE_IN_OUT_CUBIC: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+$EASE_IN_QUART: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$EASE_OUT_QUART: cubic-bezier(0.165, 0.84, 0.44, 1);
+$EASE_IN_OUT_QUART: cubic-bezier(0.77, 0, 0.175, 1);
+
+$EASE_IN_QUINT: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$EASE_OUT_QUINT: cubic-bezier(0.23, 1, 0.32, 1);
+$EASE_IN_OUT_QUINT: cubic-bezier(0.86, 0, 0.07, 1);
+
+$EASE_IN_EXPO: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$EASE_OUT_EXPO: cubic-bezier(0.19, 1, 0.22, 1);
+$EASE_IN_OUT_EXPO: cubic-bezier(1, 0, 0, 1);
+
+$EASE_IN_CIRC: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$EASE_OUT_CIRC: cubic-bezier(0.075, 0.82, 0.165, 1);
+$EASE_IN_OUT_CIRC: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+$EASE_IN_BACK: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$EASE_OUT_BACK: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$EASE_IN_OUT_BACK: cubic-bezier(0.68, -0.55, 0.265, 1.55);

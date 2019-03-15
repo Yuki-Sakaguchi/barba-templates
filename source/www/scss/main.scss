@@ -1,0 +1,124 @@
+// ========================================
+//  aem scss templates
+//      ver 2.0.4
+// ======================================== 
+@charset 'UTF-8';
+
+
+/* ========================================
+    common
+        サイト全体の設定、定義など
+======================================== */
+@import "common/variables";
+@import "common/mixins";
+@import "common/reset";
+@import "common/base";
+@import "common/parts";
+@import "common/animation";
+
+
+/* ========================================
+    origin
+======================================== */
+@mixin content {
+    position: relative;
+    height: 100%;
+}
+
+.barba-container {
+    @include content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: 60px;
+    }
+}
+
+.content {
+    @include content;
+    &__box {
+        height: 200px;
+        width: 300px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.header {
+    position: fixed;
+    background: #ccc;
+    padding: 0 30px;
+    width: 100%;
+    z-index: 100;
+    p {
+        font-size: 3rem;
+        font-weight: bold;
+        line-height: 3;
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    background: #aaa;
+    padding: 0 30px;
+    width: 100%;
+    height: 100px;
+    z-index: 100;
+    a {
+        font-size: 1.2rem;
+    }
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__item {
+        margin: 0 20px;
+        a {
+            position: relative;
+            color: $C_BLACK;
+            &:before {
+                content: "";
+                position: absolute;
+                right: 0;
+                left: 0;
+                bottom: -5px;
+                margin: auto;
+                width: 0;
+                height: 2px;
+                background-color: $C_BLACK;
+                transition: width 0.2s;
+            }
+            &:hover {
+                &:before {
+                    width: 110%;
+                }
+            }
+        }
+    }
+}
+
+.js-current-link {
+    pointer-events: none;
+    &:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 10px;
+        margin: auto;
+        width: 100%;
+        height: 2px;
+        background-color: $C_BLACK;
+    }
+}

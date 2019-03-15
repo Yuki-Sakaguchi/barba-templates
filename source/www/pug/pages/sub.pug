@@ -1,0 +1,19 @@
+extends ../common/_layout.pug
+
+
+
+//- ページ固有の変数を宣言
+block setVariable
+    -
+        var barbaName = 'slide'
+
+        var meta = {
+            title: 'SUB | Barba.js',
+            description: 'SUB | Barba.jsを使った画面遷移のテスト',
+            keywords: 'SUB, Barba.js, SPA, 非同期'
+        };
+
+
+//- メインコンテンツ
+block content
+    p SUB
