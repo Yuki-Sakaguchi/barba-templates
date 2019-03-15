@@ -1,4 +1,4 @@
-"usestric"
+"use stric"
 
 $(function () {
     /**
